@@ -14,6 +14,7 @@ body {
     background-color: #1e1e1e;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
 
 .panel {
@@ -26,8 +27,10 @@ body {
 .header {
     font-family: 'Roboto';
     background-color: #ffffff;
+    z-index: 1;
+
     position: sticky;
-    top: 0;
+    top: -5rem;
 }
 
 .navbar {
@@ -35,7 +38,24 @@ body {
     margin: 1rem 3rem 1rem 3rem;
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+}
+
+.sticky {
+    display: flex;
+    flex-direction: row;
+}
+
+.sticky #logo {
+    margin-right: 5rem;
+    position: sticky;
+    top: 1.5rem;
+}
+
+.non-sticky {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .nav-menu {
@@ -339,7 +359,18 @@ h1 {
     }
 
     .navbar {
-        display: grid;
+        /*display: grid;*/
+    }
+
+    .sticky {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 8rem; /*is it really?*/
+    }
+
+    #logo {
+        margin: 0;
     }
 
     .language {
@@ -350,10 +381,10 @@ h1 {
     }
 
     .hamburger {
-        display: grid;
-        grid-column: span 2;
-        justify-content: flex-end;
-        margin-bottom: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .hamburger.active .bar:nth-child(2) {
@@ -368,16 +399,19 @@ h1 {
         transform: translateY(-10px) rotate(-45deg);
     }
 
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 57px;
+    .header .nav-menu {
+        display: none;
         gap: 0.2rem;
         flex-direction: column;
         background-color: #ffffff;
         width: 100%;
         text-align: center;
         transition: 0.3s;
+
+        margin: 0 auto;
+        max-width: 700px; /*that of the .panel*/
+        position: absolute;
+        top: 12.5rem; /*so it doesn't disturb navbar*/
     }
 
     nav-item {
@@ -385,6 +419,7 @@ h1 {
     }
 
     .nav-menu.active {
+        display: block;
         left: 0;
     }
 
